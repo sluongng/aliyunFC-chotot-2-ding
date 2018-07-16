@@ -2,13 +2,35 @@
 
 A simple nodejs8 serverless function to fetch ChoTot gateway api for rental information in district 1
 
-## Requirement
+## Requirements
 
 - NodeJS 8.0 and NPM
 - AliCloud (AliYun) account with Function Compute(Alicloud serverless service) enabled
 - [fcli](https://github.com/aliyun/fcli) to configure Function Compute from cli.
 
 - (Not required) AliCloud SLS for log collection
+
+## What is this
+
+- A Serverless function that i setup as a cronjob on Alicloud.
+- The cron is set to run hourly
+- The logic is as follow:
+
+    1. Fetch a pre-created JsonBin array.
+    
+    2. Fetch data from ChoTot Gateway with pre-defined parameters for location i picked.
+    In this case its District 1, Hochiminh city, VietNam.
+
+    3. Using the JSONBIN array, filter through all the old listing that we have encountered in the past using `list_id` of the ads.
+    
+    4. Filter through all the ads listing with a `MAX_PRICE` hardcoded at 7 Millions VND.
+    (this could be move to env variable now that i think of it)
+    
+    5. Send all the remainding posts information to DingTalk which I use at work everyday.
+    Together with a link which i can click to go to the website orignal post.
+
+    6. Append all the newly found `list_id` to the previous old posts list.
+    Update the new list to JsonBin for next run.
 
 ## How to use
 

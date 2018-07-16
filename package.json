@@ -1,0 +1,25 @@
+{
+  "name": "serverless-rental",
+  "version": "1.0.0",
+  "description": "using serverless to send rental notifications",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "deploy": "fcli function update --service-name housing --function-name chotot --code-dir .",
+    "invoke": "fcli function invoke --service-name housing --function-name chotot",
+    "log": "fcli function logs --service-name housing --function-name chotot --start $(date -v -5m -u '+%Y-%m-%dT%H:%M:%SZ')",
+    "live-test": "npm run deploy && npm run invoke && npm run log"
+  },
+  "keywords": [
+    "serverless",
+    "alicloud",
+    "function",
+    "compute"
+  ],
+  "author": "son.luongngoc",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "sprintf-js": "^1.1.1"
+  }
+}

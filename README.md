@@ -61,3 +61,5 @@ fcli service function --service-name housing \
 - Go to Alicloud console for logging and environment variable setups
 - There are 3 `npm run` commands: `deploy`, `invoke`, `log` for local development purposes
 - Run `npm run live-test` to execute all 3 commands sequentially for a live test run.
+
+- Timing trigger is not easy to setup via `fcli` so I suggest using web console for now.
